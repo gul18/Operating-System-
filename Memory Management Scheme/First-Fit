@@ -1,0 +1,56 @@
+import java.util.Scanner;
+class Firstfit
+{
+public static void main(String args[])
+{ 	
+Scanner sc = new Scanner(System.in);
+int max=25;
+int frag[]= new int[max];
+int b[]= new int[max];
+int f[]= new int[max];
+int bf[]= new int[max];
+int ff[]= new int[max];
+int nf;
+int temp=0;
+int nb,i,j;
+System.out.print("\n\tMemory Management Scheme-First Fit");
+System.out.print("\nEnter the no of blocks:");
+nb=sc.nextInt();
+System.out.print("\n Enter the no of files:");
+nf=sc.nextInt();
+System.out.print("\n Enter the size of the blocks:-\n");
+for(i=1;i<=nb;i++)
+{
+	System.out.print("\n Block "+ i+ ":");
+	b[i]=sc.nextInt();
+}	
+System.out.print("\n Enter the size of the files:-\n");
+for(i=1;i<=nf;i++)
+{
+	System.out.print("\n File "+ i + ":");
+	f[i]=sc.nextInt();
+}
+for(i=1;i<=nf;i++)
+{
+	for(j=1;j<=nb;j++)
+	{
+		if(bf[j]!=1)
+		{
+			temp=b[j]-f[i];
+			if(temp>=0)
+			{
+				ff[i]=j;
+				break;
+			}
+		}
+	}
+	frag[i]=temp;
+	bf[ff[i]]=1;
+}
+System.out.print("\nFile no:\tFile_size:\tBlock_no.:\tBlock_size:\tFragment");
+for(i=1;i<=nf;i++)
+{
+	System.out.print("\n" + i + "\t\t" + f[i] + "\t\t" + ff[i] + "\t\t" + b[ff[i]] + "\t\t" + frag[i]);	
+}
+}
+}	
