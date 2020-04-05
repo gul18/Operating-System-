@@ -1,0 +1,46 @@
+import java.util.Scanner;
+public class Worstfit {
+    public static void main(String[] args) {
+       Scanner sc=new Scanner(System.in); 
+       int nb,nf,i,j,high=0;
+       int[] b = new int[30];
+       int[] f = new int[30];
+       int[] frag = new int[30];
+       int[] bf = new int[30];
+       int[] ff = new int[30];
+       int[] temp = new int[30];
+       System.out.println("Enter the number of blocks= ");
+       nb=sc.nextInt();  
+       System.out.println("Enter the number of files= ");
+       nf=sc.nextInt();
+       System.out.println("Enter the size of blocks= ");
+       for(i=1;i<=nb;i++){
+           b[i]=sc.nextInt();
+       }
+       System.out.println("Enter the size of files= ");
+       for(i=1;i<=nf;i++){
+           f[i]=sc.nextInt();
+       }
+       for(i=1;i<=nf;i++){
+           for(j=1;j<=nb;j++){
+               if(bf[j]!=1){
+                  temp[i]=b[j]-f[i];  
+                  if(temp[i]>=0)
+                      if(high<temp[i]){
+                        ff[i]=j;
+                        high=temp[i];
+                    }             
+                }   
+            }
+        frag[i]=high;
+        bf[ff[i]]=1;
+        high=0;
+       }
+       System.out.println("\nFile No.   File size    Block no.       Block size       Fragment");
+       for(i=1;i<=nf;i++){
+            System.out.println(i+"            "+f[i]+"            "+ff[i]+"             "+b[ff[i]]+"                 "+frag[i]);
+       }   
+    }  
+}
+
+
