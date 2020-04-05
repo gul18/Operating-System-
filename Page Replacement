@@ -1,0 +1,49 @@
+import java.util.Scanner;
+class fifo
+{
+public static void main(String args[]){
+	Scanner sc=new Scanner(System.in);
+	int rstr[]=new int[30];
+	int i,n,fl,hit=0,x=0;
+	System.out.println("Enter the size of ref string");
+	n=sc.nextInt();
+	System.out.println("Enter the values of ref string elements");
+	for(i=0;i<n;i++)
+	{	rstr[i]=sc.nextInt();
+	}
+	System.out.println("Enter number of frames");
+	int fr=sc.nextInt();
+	int stck[]=new int[fr];
+	for(i=0;i<fr;i++)
+	{	stck[i]=-1;
+	}
+for(i=0;i<n;i++)
+{   fl=1;
+for(int j=0;j<fr;j++)
+     {	
+	if(stck[j] == rstr[i])
+	{     fl=0;
+                         hit++;
+	       break;
+	}
+      }
+if(x==fr)
+    x=0;
+if(fl==1)
+{	stck[x]=rstr[i];
+	x++;
+}
+System.out.println("frame: ");
+for(int k=0;k<fr;k++)
+	System.out.print(stck[k]+"    ");
+System.out.println();
+}
+System.out.println("No. of page hit: :"+hit);
+}
+}
+
+
+
+
+
+
