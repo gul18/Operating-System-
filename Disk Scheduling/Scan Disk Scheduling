@@ -1,0 +1,56 @@
+import java.util.Scanner;
+class Scan{
+public static void main(String args[])
+{
+int[] d=new int[20];
+int j,i,n;
+int sum=0;
+int disk;
+int temp, max;
+int dloc=-1;
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter number of locations");
+n=sc.nextInt();
+System.out.println("Enter the position of head");
+disk=sc.nextInt();
+System.out.println("Enter position of disk queue");
+for(i=0;i<n;i++)
+{
+ d[i]=sc.nextInt();
+}
+d[n]=disk;
+n=n+1;
+for(i=0;i<n;i++)
+{
+ for(j=i;j<n;j++)
+ {
+  if(d[i]>d[j])
+  {
+	temp=d[i];
+	d[i]=d[j];
+	d[j]=temp;
+  }
+ }
+}
+max=d[n-1];
+for(i=0;i<n;i++)
+{
+ if(disk==d[i])
+ {
+  dloc=i;
+  break;
+ }
+}
+for(i=dloc;i>=0;i--)
+{
+  System.out.print(d[i] +"--> " );
+}
+for(i=dloc+1;i<n-1;i++)
+{
+  System.out.print(d[i] + "-->");
+}
+System.out.println(d[n-1]);
+sum=disk+max;
+ System.out.println("Movement of total cylinders " + sum);
+}
+}				
